@@ -6,8 +6,8 @@ const PangramFinder = function (phrase) {
 }
 
 PangramFinder.prototype.isPangram = function () {
-    // let phaseLetters = new Map(this.phrase.toLowerCase().split('').map(c => [c, true]));
-    // return this.alphabet.split('').every(letter => phaseLetters.has(letter));
+    let phaseLetters = new Map(this.phrase.toLowerCase().split('').map(c => [c, true]));
+    return this.alphabet.split('').every(letter => phaseLetters.has(letter));
 
     // const phaseSortedLetters = sortLetters(this.phrase);
     //  /* remove duplicates and symbols */
@@ -21,11 +21,11 @@ PangramFinder.prototype.isPangram = function () {
     //     .reduce((bitmap, code) => bitmap | (1 << code), 0);
     // return bitmap == (1 << 26) - 1;
 
-    const phaseLetters = this.phrase.split('');
-    const bitmap = phaseLetters
-        .map(letter => parseInt(letter, 36) - 9 || 0)
-        .reduce((bitmap, code) => bitmap | (1 << code), 1);
-    return bitmap === 134217727;
+    // const phaseLetters = this.phrase.split('');
+    // const bitmap = phaseLetters
+    //     .map(letter => parseInt(letter, 36) - 9 || 0)
+    //     .reduce((bitmap, code) => bitmap | (1 << code), 1);
+    // return bitmap === 134217727;
 }
 
 module.exports = PangramFinder;
