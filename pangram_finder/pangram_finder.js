@@ -14,12 +14,18 @@ PangramFinder.prototype.isPangram = function () {
     // const cleanedLetters = phaseSortedLetters.replaceAll(/([a-z])\1+|[^a-z]/g, '$1');
     // return cleanedLetters === this.alphabet;
 
-    const phaseLetters = this.phrase.toLowerCase().split('');
+    // const phaseLetters = this.phrase.toLowerCase().split('');
+    // const bitmap = phaseLetters
+    //     .map(letter => letter.charCodeAt(0) - 97)
+    //     .filter(code => 0 <= code && code < 26)
+    //     .reduce((bitmap, code) => bitmap | (1 << code), 0);
+    // return bitmap == (1 << 26) - 1;
+
+    const phaseLetters = this.phrase.split('');
     const bitmap = phaseLetters
-        .map(letter => letter.charCodeAt(0) - 97)
-        .filter(code => 0 <= code && code < 26)
-        .reduce((bitmap, code) => bitmap | (1 << code), 0);
-    return bitmap == (1 << 26) - 1;
+        .map(letter => parseInt(letter, 36) - 9 || 0)
+        .reduce((bitmap, code) => bitmap | (1 << code), 1);
+    return bitmap === 134217727;
 }
 
 module.exports = PangramFinder;
