@@ -4,8 +4,8 @@ const PangramFinder = function (phrase) {
 }
 
 PangramFinder.prototype.isPangram = function () {
-    let phaseLetters = new Map(this.phrase.toLowerCase().split('').sort().map(c => [c, true]));
-    return this.alphabet.every(letter => phaseLetters.get(letter));
+    let phaseLetters = new Map(this.phrase.toLowerCase().split('').map(c => [c, true]));
+    return this.alphabet.every(letter => phaseLetters.has(letter));
 }
 
 module.exports = PangramFinder;
