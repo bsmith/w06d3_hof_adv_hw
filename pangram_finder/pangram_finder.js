@@ -6,8 +6,8 @@ const PangramFinder = function (phrase) {
 }
 
 PangramFinder.prototype.isPangram = function () {
-    let phaseLetters = new Map(this.phrase.toLowerCase().split('').map(c => [c, true]));
-    return this.alphabet.split('').every(letter => phaseLetters.has(letter));
+    let phraseMap = new Map(this.phrase.toLowerCase().split('').map(c => [c, true]));
+    return this.alphabet.split('').every(letter => phraseMap.has(letter));
 
     // const phaseSortedLetters = sortLetters(this.phrase);
     //  /* remove duplicates and symbols */
